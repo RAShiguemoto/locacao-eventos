@@ -1,0 +1,2 @@
+# locacao-eventos
+JSF application
