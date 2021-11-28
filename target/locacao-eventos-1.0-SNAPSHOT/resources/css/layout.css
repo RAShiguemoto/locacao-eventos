@@ -1,0 +1,77 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+#principal {
+    display: flex;
+}
+
+#menu {
+    width: 12%;
+}
+
+#corpo {
+    width: 88%;
+}
+
+body .ui-menu {
+    width: 100%; 
+    height: 100vh;
+    border: none;
+    border-radius: 0;
+    border-right: 0.0625rem white solid;
+}
+
+#header {
+    height: 3.125rem; 
+    background-color: #1f2d40;
+    display: flex; 
+    align-items: center
+}
+
+#headerLeftContainer {
+    width: 33%; 
+    padding: 0.3125rem
+}
+
+#headerCenterContainer {
+    width: 33%; 
+    text-align: center
+}
+
+#headerRightContainer {
+    width: 33%; 
+    text-align: right
+}
+
+.headerLabel {
+    font-family: Verdana !important; 
+    color: white
+}
+
+#footer {
+    height: 3.125rem; 
+    background-color: #1f2d40; 
+    width: 88%; 
+    position: fixed; 
+    bottom: 0; 
+    text-align: center
+}
+
+#rodapeLabel1 {
+    display: inline-block; 
+    margin-top: 0.5rem; 
+    width: 100%; 
+    font-family: Verdana; 
+    color: white; 
+    font-size: 0.75rem
+}
+
+#rodapeLabel2 {
+    display: inline-block; 
+    width: 100%; 
+    font-family: Verdana; 
+    color: white; 
+    font-size: 0.75rem
+}
