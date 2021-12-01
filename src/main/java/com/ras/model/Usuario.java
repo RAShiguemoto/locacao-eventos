@@ -3,9 +3,8 @@ package com.ras.model;
 import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import lombok.Getter;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 /**
  *
@@ -13,7 +12,8 @@ import lombok.Setter;
  */
 
 @Entity
-@Getter @Setter @NoArgsConstructor
+@Data
+@NoArgsConstructor
 public class Usuario implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
@@ -22,4 +22,5 @@ public class Usuario implements Serializable {
     private String login;
     private String senha;
     private String permissao;
+    private String email;
 }

@@ -1,0 +1,48 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <f:metadata>  
+            <f:viewAction action="#{usuarioController.listar()}" />
+        </f:metadata> 
+
+        <div class="pageTitle" style="height: 50px; margin-top: 20px; display: flex; align-items: center">
+            <p:outputLabel value="Lista de Usuários" style="font-size: 20px; width: 100%; text-align: center; font-family: Verdana !important"/>
+        </div>
+
+        <div class="dataTable" style="width: 80%; margin-top: 20px; margin-left: 10%">
+            <p:dataTable var="conteudo" value="#{usuarioController.usuarios}">
+                <p:column headerText="Código" width="5%" style="text-align: center">
+                    <h:outputText value="#{conteudo.id}" />
+                </p:column>
+
+                <p:column headerText="Login" width="10%" style="text-align: center">
+                    <h:outputText value="#{conteudo.login}" />
+                </p:column>
+
+                <p:column headerText="Permissão" width="10%" style="text-align: center">
+                    <h:outputText value="#{conteudo.permissao}" />
+                </p:column>
+                
+                <p:column headerText="E-mail" width="20%" style="text-align: center">
+                    <h:outputText value="#{conteudo.email}" />
+                </p:column>
+
+                <p:column headerText="Editar" width="5%" style="text-align: center">
+                    <p:commandLink action="#{buttonView.buttonAction}">
+                        <i class="pi pi-pencil"/>
+                    </p:commandLink>
+                </p:column>
+                
+                <p:column headerText="Remover" width="5%" style="text-align: center">
+                    <p:commandLink action="#{buttonView.buttonAction}">
+                        <i class="pi pi-trash"/>
+                    </p:commandLink>
+                </p:column>
+            </p:dataTable>
+        </div>
+    </ui:define>
+</ui:composition>
