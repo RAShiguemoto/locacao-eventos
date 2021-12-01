@@ -75,3 +75,30 @@ body .ui-menu {
     color: white; 
     font-size: 0.75rem
 }
+
+.divTitle {
+    height: 3.125rem; 
+    margin-top: 1.25rem; 
+    display: flex; 
+    align-items: center
+}
+
+.title {
+    font-size: 20px !important; 
+    width: 100%; 
+    text-align: center; 
+    font-family: Verdana !important
+}
+
+.divCorpo {
+    margin-top: 1.25rem; 
+}
+
+.btnGroup {
+    width: 100%; 
+    text-align: center;
+}
+
+.ui-button {
+    width: 11.25rem
+}

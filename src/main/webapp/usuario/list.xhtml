@@ -9,12 +9,12 @@
             <f:viewAction action="#{usuarioController.listar()}" />
         </f:metadata> 
 
-        <div class="pageTitle" style="height: 50px; margin-top: 20px; display: flex; align-items: center">
-            <p:outputLabel value="Lista de Usuários" style="font-size: 20px; width: 100%; text-align: center; font-family: Verdana !important"/>
+        <div class="divTitle">
+            <p:outputLabel value="Lista de Usuários" class="title"/>
         </div>
 
-        <div class="dataTable" style="width: 80%; margin-top: 20px; margin-left: 10%">
-            <p:dataTable var="conteudo" value="#{usuarioController.usuarios}">
+        <div class="divCorpo w80 ml10">
+            <p:dataTable var="conteudo" value="#{usuarioController.usuarios}" paginator="true" paginatorPosition="bottom" rows="5">
                 <p:column headerText="Código" width="5%" style="text-align: center">
                     <h:outputText value="#{conteudo.id}" />
                 </p:column>
@@ -43,6 +43,10 @@
                     </p:commandLink>
                 </p:column>
             </p:dataTable>
+        </div>
+        
+        <div class="btnGroup mt30">
+            <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
         </div>
     </ui:define>
 </ui:composition>
