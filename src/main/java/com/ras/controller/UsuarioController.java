@@ -19,12 +19,37 @@ import lombok.Data;
 @ViewScoped
 @Data
 public class UsuarioController implements Serializable {
+    private Usuario usuario;
     private List<Usuario> usuarios = new ArrayList<>();
+    private Long paramId;
     
     @Inject
     private UsuarioFacade usuarioFacade;
     
     public void listar() {
         usuarios = usuarioFacade.listar();
+    }
+    
+    public void novo() {
+        if (paramId != null) {
+            usuario = usuarioFacade.buscarPorId(paramId);
+        } else {
+            usuario = new Usuario();
+        }
+    }
+    
+    public String salvar() {
+        usuario.setAtivo(Boolean.TRUE);
+        usuarioFacade.salvar(usuario);
+        return "list?faces-redirect=true";
+    }
+    
+    public String editar(Usuario u) {
+        return "form?faces-redirect=true&&id=" + u.getId();
+    }
+    
+    public void excluir(Usuario u) {
+        usuarioFacade.excluir(u);
+        listar();
     }
 }

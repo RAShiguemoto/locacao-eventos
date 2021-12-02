@@ -5,40 +5,50 @@
                 xmlns:f="http://java.sun.com/jsf/core">
 
     <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{usuarioController.paramId}"/>
+            <f:viewAction action="#{usuarioController.novo()}"/>
+        </f:metadata>
+
         <div class="divTitle">
             <p:outputLabel value="Cadastro de Usuário" class="title"/>
         </div>
 
-        <div class="divCorpo w60 ml20" style="display: flex">
-            <div style="width: 30%; padding: 5px">
-                <p:outputLabel for="login" value="Login:"/>
-                <p:inputText id="login" style="width: 100%; margin-top: 5px"/> 
-            </div>
-            
-            <div style="width: 30%; padding: 5px">
-                <p:outputLabel for="senha" value="Senha:"/>
-                <p:password id="senha" style="width: 100%; margin-top: 5px"/> 
-            </div>
-            
-            <div style="width: 40%; padding: 5px">
-                <p:outputLabel for="permissao" value="Senha:"/>
-                <p:selectOneMenu id="permissao" style="width: 100%; margin-top: 5px">
-                    <f:selectItem itemLabel="Seleciona" itemValue=""/>
-                    <f:selectItem itemLabel="Administrador" itemValue="ADMIN"/>
-                    <f:selectItem itemLabel="Usuário" itemValue="USER"/>
-                </p:selectOneMenu>
-            </div>
-        </div>
-        
-        <div class="divCorpo w60 ml20" style="display: flex">
-            <div style="width: 100%; padding: 5px">
-                <p:outputLabel for="email" value="E-mail:"/>
-                <p:inputText id="email" style="width: 100%; margin-top: 5px"/> 
-            </div>
-        </div>
+        <h:form>
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div style="width: 30%; padding: 5px">
+                    <p:outputLabel for="login" value="Login:"/>
+                    <p:inputText id="login" value="#{usuarioController.usuario.login}" style="width: 100%; margin-top: 5px"/> 
+                </div>
 
-        <div class="btnGroup mt30">
-            <p:commandButton value="Salvar" styleClass="ui-button-success" icon="pi pi-save"/>
-        </div>
+                <div style="width: 30%; padding: 5px">
+                    <p:outputLabel for="senha" value="Senha:"/>
+                    <p:password id="senha" value="#{usuarioController.usuario.senha}" style="width: 100%; margin-top: 5px"/> 
+                </div>
+
+                <div style="width: 40%; padding: 5px">
+                    <p:outputLabel for="permissao" value="Senha:"/>
+                    <p:selectOneMenu id="permissao" value="#{usuarioController.usuario.permissao}" style="width: 100%; margin-top: 5px">
+                        <f:selectItem itemLabel="Seleciona" itemValue=""/>
+                        <f:selectItem itemLabel="Administrador" itemValue="ADMIN"/>
+                        <f:selectItem itemLabel="Usuário" itemValue="USER"/>
+                    </p:selectOneMenu>
+                </div>
+            </div>
+
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div class="w100" style="padding: 5px">
+                    <p:outputLabel for="email" value="E-mail:"/>
+                    <p:inputText id="email" value="#{usuarioController.usuario.email}" style="width: 100%; margin-top: 5px"/> 
+                </div>
+            </div>
+
+            <div class="btnGroup mt30">
+                <p:commandButton value="Salvar" 
+                                 action="#{usuarioController.salvar()}" 
+                                 styleClass="ui-button-success" 
+                                 icon="pi pi-save"/>
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>

@@ -13,38 +13,45 @@
             <p:outputLabel value="Lista de Usuários" class="title"/>
         </div>
 
-        <div class="divCorpo w80 ml10">
-            <p:dataTable var="conteudo" value="#{usuarioController.usuarios}" paginator="true" paginatorPosition="bottom" rows="5">
-                <p:column headerText="Código" width="5%" style="text-align: center">
-                    <h:outputText value="#{conteudo.id}" />
-                </p:column>
+        <h:form id="form">
+            <div class="divCorpo w80 ml10">
+                <p:dataTable id="tabela" 
+                             var="conteudo" 
+                             value="#{usuarioController.usuarios}" 
+                             paginator="true" 
+                             paginatorPosition="bottom" rows="5">
+                    
+                    <p:column headerText="Código" width="5%" style="text-align: center">
+                        <h:outputText value="#{conteudo.id}" />
+                    </p:column>
 
-                <p:column headerText="Login" width="10%" style="text-align: center">
-                    <h:outputText value="#{conteudo.login}" />
-                </p:column>
+                    <p:column headerText="Login" width="10%" style="text-align: center">
+                        <h:outputText value="#{conteudo.login}" />
+                    </p:column>
 
-                <p:column headerText="Permissão" width="10%" style="text-align: center">
-                    <h:outputText value="#{conteudo.permissao}" />
-                </p:column>
-                
-                <p:column headerText="E-mail" width="20%" style="text-align: center">
-                    <h:outputText value="#{conteudo.email}" />
-                </p:column>
+                    <p:column headerText="Permissão" width="10%" style="text-align: center">
+                        <h:outputText value="#{conteudo.permissao}" />
+                    </p:column>
 
-                <p:column headerText="Editar" width="5%" style="text-align: center">
-                    <p:commandLink action="#{buttonView.buttonAction}">
-                        <i class="pi pi-pencil"/>
-                    </p:commandLink>
-                </p:column>
-                
-                <p:column headerText="Remover" width="5%" style="text-align: center">
-                    <p:commandLink action="#{buttonView.buttonAction}">
-                        <i class="pi pi-trash"/>
-                    </p:commandLink>
-                </p:column>
-            </p:dataTable>
-        </div>
-        
+                    <p:column headerText="E-mail" width="20%" style="text-align: center">
+                        <h:outputText value="#{conteudo.email}" />
+                    </p:column>
+
+                    <p:column headerText="Editar" width="5%" style="text-align: center">
+                        <p:commandLink action="#{usuarioController.editar(conteudo)}">
+                            <i class="pi pi-pencil"/>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="Remover" width="5%" style="text-align: center">
+                        <p:commandLink actionListener="#{usuarioController.excluir(conteudo)}" ajax="true" update="form:tabela">
+                            <i class="pi pi-trash"/>
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+
         <div class="btnGroup mt30">
             <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
         </div>
