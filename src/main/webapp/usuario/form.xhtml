@@ -16,19 +16,19 @@
 
         <h:form>
             <div class="divCorpo w60 ml20" style="display: flex">
-                <div style="width: 30%; padding: 5px">
+                <div style="width: 30%; padding: 0.3125rem">
                     <p:outputLabel for="login" value="Login:"/>
-                    <p:inputText id="login" value="#{usuarioController.usuario.login}" style="width: 100%; margin-top: 5px"/> 
+                    <p:inputText id="login" value="#{usuarioController.usuario.login}" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
 
-                <div style="width: 30%; padding: 5px">
+                <div style="width: 30%; padding: 0.3125rem">
                     <p:outputLabel for="senha" value="Senha:"/>
-                    <p:password id="senha" value="#{usuarioController.usuario.senha}" style="width: 100%; margin-top: 5px"/> 
+                    <p:password id="senha" value="#{usuarioController.usuario.senha}" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
 
-                <div style="width: 40%; padding: 5px">
+                <div style="width: 40%; padding: 0.3125rem">
                     <p:outputLabel for="permissao" value="Senha:"/>
-                    <p:selectOneMenu id="permissao" value="#{usuarioController.usuario.permissao}" style="width: 100%; margin-top: 5px">
+                    <p:selectOneMenu id="permissao" value="#{usuarioController.usuario.permissao}" style="width: 100%; margin-top: 0.3125rem">
                         <f:selectItem itemLabel="Seleciona" itemValue=""/>
                         <f:selectItem itemLabel="Administrador" itemValue="ADMIN"/>
                         <f:selectItem itemLabel="Usuário" itemValue="USER"/>
@@ -37,9 +37,9 @@
             </div>
 
             <div class="divCorpo w60 ml20" style="display: flex">
-                <div class="w100" style="padding: 5px">
+                <div class="w100" style="padding: 0.3125rem">
                     <p:outputLabel for="email" value="E-mail:"/>
-                    <p:inputText id="email" value="#{usuarioController.usuario.email}" style="width: 100%; margin-top: 5px"/> 
+                    <p:inputText id="email" value="#{usuarioController.usuario.email}" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
             </div>
 
@@ -47,6 +47,12 @@
                 <p:commandButton value="Salvar" 
                                  action="#{usuarioController.salvar()}" 
                                  styleClass="ui-button-success" 
+                                 icon="pi pi-save"/>
+                
+                <p:commandButton value="Cancelar" 
+                                 action="list?faces-redirect=true" 
+                                 styleClass="ui-button-secondary" 
+                                 style="margin-left: 0.625rem"
                                  icon="pi pi-save"/>
             </div>
         </h:form>
