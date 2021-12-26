@@ -1,4 +1,13 @@
 D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\facade\UsuarioFacade.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\model\Cliente.java
 D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\controller\UsuarioController.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\facade\ClienteFacade.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\controller\ClienteController.java
 D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\model\Usuario.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\facade\CidadeFacade.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\model\Contato.java
 D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\facade\AbstractFacade.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\converter\GenericConverter.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\model\Logradouro.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\controller\CidadeController.java
+D:\Documentos\GitHub\locacao-eventos\src\main\java\com\ras\model\Cidade.java

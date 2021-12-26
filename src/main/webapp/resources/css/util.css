@@ -93,3 +93,11 @@
     margin-top: 1.875rem;
 }
 
+.textUpperCase {
+    text-transform: uppercase;
+}
+
+.textLowerCase {
+    text-transform: lowercase;
+}
+

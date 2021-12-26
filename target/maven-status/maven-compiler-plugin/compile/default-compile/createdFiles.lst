@@ -1,4 +1,13 @@
+com\ras\converter\GenericConverter.class
 com\ras\facade\AbstractFacade.class
-com\ras\controller\UsuarioController.class
-com\ras\facade\UsuarioFacade.class
+com\ras\model\Cliente.class
+com\ras\model\Cidade.class
+com\ras\model\Contato.class
 com\ras\model\Usuario.class
+com\ras\facade\CidadeFacade.class
+com\ras\controller\UsuarioController.class
+com\ras\facade\ClienteFacade.class
+com\ras\facade\UsuarioFacade.class
+com\ras\model\Logradouro.class
+com\ras\controller\CidadeController.class
+com\ras\controller\ClienteController.class

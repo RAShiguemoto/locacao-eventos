@@ -1,0 +1,59 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <f:metadata>  
+            <f:viewAction action="#{clienteController.listar()}" />
+        </f:metadata> 
+
+        <div class="divTitle">
+            <p:outputLabel value="Lista de Clientes" class="title"/>
+        </div>
+
+        <h:form id="form">
+            <div class="divCorpo w80 ml10">
+                <p:dataTable id="tabela" 
+                             var="conteudo" 
+                             value="#{clienteController.clientes}" 
+                             paginator="true" 
+                             paginatorPosition="bottom" rows="5">
+                    
+                    <p:column headerText="Código" width="10%" style="text-align: center">
+                        <h:outputText value="#{conteudo.id}" />
+                    </p:column>
+
+                    <p:column headerText="Nome" width="30%" style="text-align: center">
+                        <h:outputText value="#{conteudo.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Documento" width="20%" style="text-align: center">
+                        <h:outputText value="#{conteudo.cpfOuCnpj}" />
+                    </p:column>
+                    
+                    <p:column headerText="Cidade" width="20%" style="text-align: center">
+                        <h:outputText value="#{conteudo.logradouro.cidade.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Editar" width="5%" style="text-align: center">
+                        <p:commandLink action="#{clienteController.editar(conteudo)}">
+                            <i class="pi pi-pencil"/>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="Remover" width="5%" style="text-align: center">
+                        <p:commandLink actionListener="#{clienteController.excluir(conteudo)}" ajax="true" update="form:tabela">
+                            <i class="pi pi-trash"/>
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </div>
+        </h:form>
+
+        <div class="btnGroup mt30">
+            <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
+        </div>
+    </ui:define>
+</ui:composition>

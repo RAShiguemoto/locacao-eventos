@@ -35,4 +35,13 @@ public abstract class AbstractFacade<T> {
         Query query = getEntityManager().createQuery(consulta);
         return query.getResultList();
     }
+    
+    public List<T> autoComplete(String atributo, String cons) {
+        String consulta = "FROM " + entityClass.getSimpleName() 
+                + " WHERE UPPER(" + atributo + ") LIKE UPPER('" + cons + "%')"
+                + " ORDER BY " + atributo + " ASC";
+        
+        Query query = getEntityManager().createQuery(consulta);
+        return query.getResultList();
+    }
 }
