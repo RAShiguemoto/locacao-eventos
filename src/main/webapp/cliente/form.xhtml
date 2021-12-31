@@ -45,14 +45,14 @@
             </div>
             
             <div class="divCorpo w60 ml20" style="display: flex">
-                <div class="w50" style="padding: 0.3125rem">
+                <div class="w40" style="padding: 0.3125rem">
                     <p:outputLabel for="complemento" value="Complemento:"/>
                     <p:inputText id="complemento" class="textUpperCase" value="#{clienteController.cliente.logradouro.complemento}" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
                 
-                <div class="w10" style="padding: 0.3125rem">
+                <div class="w20" style="padding: 0.3125rem">
                     <p:outputLabel for="cep" value="Cep:"/>
-                    <p:inputText id="cep" value="#{clienteController.cliente.logradouro.cep}" style="width: 100%; margin-top: 0.3125rem"/> 
+                    <p:inputMask id="cep" value="#{clienteController.cliente.logradouro.cep}" mask="99999-999" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
                 
                 <div class="w40" style="padding: 0.3125rem">
@@ -72,12 +72,12 @@
             <div class="divCorpo w60 ml20" style="display: flex">
                 <div class="w30" style="padding: 0.3125rem">
                     <p:outputLabel for="tel-fixo" value="Telefone:"/>
-                    <p:inputText id="tel-fixo" value="#{clienteController.cliente.contato.telefoneFixo}" style="width: 100%; margin-top: 0.3125rem"/> 
+                    <p:inputMask id="tel-fixo" value="#{clienteController.cliente.contato.telefoneFixo}" mask="(99)9999-9999" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
                 
                 <div class="w30" style="padding: 0.3125rem">
                     <p:outputLabel for="celular" value="Celular:"/>
-                    <p:inputText id="celular" value="#{clienteController.cliente.contato.celular}" style="width: 100%; margin-top: 0.3125rem"/> 
+                    <p:inputMask id="celular" value="#{clienteController.cliente.contato.celular}" mask="(99)99999-9999" style="width: 100%; margin-top: 0.3125rem"/> 
                 </div>
                 
                 <div class="w40" style="padding: 0.3125rem">
