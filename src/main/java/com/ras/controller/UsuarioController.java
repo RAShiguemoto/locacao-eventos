@@ -5,6 +5,8 @@ import com.ras.model.Usuario;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -55,5 +57,8 @@ public class UsuarioController implements Serializable {
         log.info("Excluindo usuário '{}'.", u.getLogin());
         usuarioFacade.excluir(u);
         listar();
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Mensagem",  "Usuário excluído com sucesso!"));
     }
 }

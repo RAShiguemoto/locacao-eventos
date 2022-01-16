@@ -7,10 +7,13 @@ import com.ras.model.Logradouro;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import javax.faces.application.FacesMessage;
+import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
 /**
  *
@@ -20,6 +23,7 @@ import lombok.Data;
 @Named
 @ViewScoped
 @Data
+@Log4j2
 public class ClienteController implements Serializable {
     private Cliente cliente;
     private List<Cliente> clientes = new ArrayList<>();
@@ -43,6 +47,7 @@ public class ClienteController implements Serializable {
     }
     
     public String salvar() {
+        log.info("Salvando cliente '{}'.", cliente.getNome());
         cliente.setAtivo(Boolean.TRUE);
         clienteFacade.salvar(cliente);
         return "list?faces-redirect=true";
@@ -53,7 +58,11 @@ public class ClienteController implements Serializable {
     }
     
     public void excluir(Cliente u) {
+        log.info("Excluindo cliente '{}'.", u.getNome());
         clienteFacade.excluir(u);
         listar();
+        
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage("Mensagem",  "Cliente excluído com sucesso!"));
     }
 }

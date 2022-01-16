@@ -1,8 +1,9 @@
-<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-                template="/WEB-INF/template/layout.xhtml"
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
                 xmlns:p="http://primefaces.org/ui"
                 xmlns:h="http://java.sun.com/jsf/html"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/template/layout.xhtml">
 
     <ui:define name="content">
         <f:metadata>  
@@ -14,6 +15,12 @@
         </div>
 
         <h:form id="form">
+            <div class="divCorpo w80 ml10">
+                <p:messages id="messages" showDetail="true" closable="true" >
+                    <p:autoUpdate />
+                </p:messages>
+            </div>   
+
             <div class="divCorpo w80 ml10">
                 <p:dataTable id="tabela" 
                              var="conteudo" 
