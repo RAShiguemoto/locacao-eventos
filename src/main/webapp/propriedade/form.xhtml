@@ -1,0 +1,101 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/WEB-INF/template/layout.xhtml"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{propriedadeController.paramId}"/>
+            <f:viewAction action="#{propriedadeController.novo()}"/>
+        </f:metadata>
+
+        <div class="divTitle">
+            <p:outputLabel value="Cadastro de Propriedade" class="title"/>
+        </div>
+
+        <h:form>
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div style="width: 40%; padding: 0.3125rem">
+                    <p:outputLabel for="nome" value="Nome:"/>
+                    <p:inputText id="nome" class="textUpperCase" value="#{propriedadeController.propriedade.nome}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+
+                <div style="width: 60%; padding: 0.3125rem">
+                    <p:outputLabel for="descricao" value="Descrição:"/>
+                    <p:inputText id="descricao" class="textUpperCase" value="#{propriedadeController.propriedade.descricao}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+            </div>
+            
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div class="w50" style="padding: 0.3125rem">
+                    <p:outputLabel for="endereco" value="Endereço:"/>
+                    <p:inputText id="endereco" class="textUpperCase" value="#{propriedadeController.propriedade.logradouro.endereco}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+                
+                <div class="w10" style="padding: 0.3125rem">
+                    <p:outputLabel for="numero" value="Nº:"/>
+                    <p:inputText id="numero" value="#{propriedadeController.propriedade.logradouro.numero}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+                
+                <div class="w40" style="padding: 0.3125rem">
+                    <p:outputLabel for="bairro" value="Bairro:"/>
+                    <p:inputText id="bairro" class="textUpperCase" value="#{propriedadeController.propriedade.logradouro.bairro}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+            </div>
+            
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div class="w40" style="padding: 0.3125rem">
+                    <p:outputLabel for="complemento" value="Complemento:"/>
+                    <p:inputText id="complemento" class="textUpperCase" value="#{propriedadeController.propriedade.logradouro.complemento}" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+                
+                <div class="w20" style="padding: 0.3125rem">
+                    <p:outputLabel for="cep" value="Cep:"/>
+                    <p:inputMask id="cep" value="#{propriedadeController.propriedade.logradouro.cep}" mask="99999-999" style="width: 100%; margin-top: 0.3125rem"/> 
+                </div>
+                
+                <div class="w40" style="padding: 0.3125rem">
+                    <p:outputLabel for="cidade" value="Cidade:"/>
+                    <p:autoComplete id="cidade"
+                                    var="cid"
+                                    itemLabel="#{cid.nome}"
+                                    itemValue="#{cid.id.toString()}"
+                                    value="#{propriedadeController.propriedade.logradouro.cidade}" 
+                                    completeMethod="#{cidadeController.autoComplete}"
+                                    converter="#{cidadeController.converter()}"
+                                    style="width: 100%; margin-top: 0.3125rem"
+                                    inputStyleClass="w100"/>
+                </div>
+            </div>
+            
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div class="w20" style="padding: 0.3125rem">
+                    <p:outputLabel for="valorDiaria" value="Valor Diária:"/>
+                    <p:inputText id="valorDiaria" 
+                                 class="textUpperCase" 
+                                 value="#{propriedadeController.propriedade.valorDiaria}"
+                                 onclick="this.select()"
+                                 onkeyup="mascara(this, valor)"
+                                 style="width: 100%; margin-top: 0.3125rem">
+                        
+                        <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                    </p:inputText> 
+                </div>
+            </div>
+
+            <div class="btnGroup mt30">
+                <p:commandButton value="Salvar" 
+                                 action="#{propriedadeController.salvar()}" 
+                                 styleClass="ui-button-success" 
+                                 icon="pi pi-save"/>
+                
+                <p:commandButton value="Cancelar" 
+                                 action="list?faces-redirect=true" 
+                                 styleClass="ui-button-secondary" 
+                                 style="margin-left: 0.625rem"
+                                 icon="pi pi-save"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
