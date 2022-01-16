@@ -20,7 +20,7 @@
                              value="#{usuarioController.usuarios}" 
                              paginator="true" 
                              paginatorPosition="bottom" rows="5">
-                    
+
                     <p:column headerText="Código" width="5%" style="text-align: center">
                         <h:outputText value="#{conteudo.id}" />
                     </p:column>
@@ -50,10 +50,10 @@
                     </p:column>
                 </p:dataTable>
             </div>
-        </h:form>
 
-        <div class="btnGroup mt30">
-            <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
-        </div>
+            <div class="btnGroup mt30">
+                <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>

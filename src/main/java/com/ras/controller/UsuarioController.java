@@ -9,6 +9,7 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import lombok.Data;
+import lombok.extern.log4j.Log4j2;
 
 /**
  *
@@ -18,6 +19,7 @@ import lombok.Data;
 @Named
 @ViewScoped
 @Data
+@Log4j2
 public class UsuarioController implements Serializable {
     private Usuario usuario;
     private List<Usuario> usuarios = new ArrayList<>();
@@ -39,6 +41,7 @@ public class UsuarioController implements Serializable {
     }
     
     public String salvar() {
+        log.info("Salvando usuário '{}'.", usuario.getLogin());
         usuario.setAtivo(Boolean.TRUE);
         usuarioFacade.salvar(usuario);
         return "list?faces-redirect=true";
@@ -49,6 +52,7 @@ public class UsuarioController implements Serializable {
     }
     
     public void excluir(Usuario u) {
+        log.info("Excluindo usuário '{}'.", u.getLogin());
         usuarioFacade.excluir(u);
         listar();
     }
