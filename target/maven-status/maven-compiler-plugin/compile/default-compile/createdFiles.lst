@@ -1,8 +1,11 @@
 com\ras\converter\GenericConverter.class
 com\ras\facade\AbstractFacade.class
 com\ras\model\Cliente.class
+com\ras\model\Agendamento.class
 com\ras\facade\PropriedadeFacade.class
+com\ras\facade\AgendamentoFacade.class
 com\ras\model\Cidade.class
+com\ras\controller\AgendamentoController.class
 com\ras\model\Contato.class
 com\ras\model\Usuario.class
 com\ras\facade\CidadeFacade.class

@@ -1,5 +1,6 @@
 package com.ras.controller;
 
+import com.ras.converter.GenericConverter;
 import com.ras.facade.ClienteFacade;
 import com.ras.model.Cliente;
 import com.ras.model.Contato;
@@ -31,6 +32,15 @@ public class ClienteController implements Serializable {
     
     @Inject
     private ClienteFacade clienteFacade;
+    
+    private GenericConverter converter;
+
+    public GenericConverter converter() {
+        if (converter == null) {
+            converter = new GenericConverter(clienteFacade);
+        }
+        return converter;
+    }
     
     public void listar() {
         clientes = clienteFacade.listar();
@@ -64,5 +74,9 @@ public class ClienteController implements Serializable {
         
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Mensagem",  "Cliente excluído com sucesso!"));
+    }
+    
+    public List<Cliente> autoComplete(String cons) {
+        return clienteFacade.autoComplete("nome", cons);
     }
 }

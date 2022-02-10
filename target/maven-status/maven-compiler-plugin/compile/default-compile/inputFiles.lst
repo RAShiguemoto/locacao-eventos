@@ -3,7 +3,9 @@ C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\controller
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Cliente.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Cidade.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\facade\PropriedadeFacade.java
+C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\facade\AgendamentoFacade.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\facade\UsuarioFacade.java
+C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\controller\AgendamentoController.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\facade\AbstractFacade.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\facade\CidadeFacade.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Propriedade.java
@@ -11,6 +13,7 @@ C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\controller
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Usuario.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Contato.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Logradouro.java
+C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\model\Agendamento.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\converter\GenericConverter.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\controller\CidadeController.java
 C:\Users\raula\Documents\GitHub\locacao-eventos\src\main\java\com\ras\controller\ClienteController.java

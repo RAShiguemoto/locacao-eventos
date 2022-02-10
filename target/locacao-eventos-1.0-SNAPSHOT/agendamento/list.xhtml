@@ -1,0 +1,66 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml" 
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <ui:define name="content">
+        <f:metadata>  
+            <f:viewAction action="#{agendamentoController.listar()}" />
+        </f:metadata> 
+
+        <div class="divTitle">
+            <p:outputLabel value="Lista de Agendamentos" class="title"/>
+        </div>
+
+        <h:form id="form">
+            <div class="divCorpo w80 ml10">
+                <p:messages id="messages" showDetail="true" closable="true" >
+                    <p:autoUpdate />
+                </p:messages>
+            </div>   
+
+            <div class="divCorpo w80 ml10">
+                <p:dataTable id="tabela" 
+                             var="conteudo" 
+                             value="#{agendamentoController.agendamentos}" 
+                             paginator="true" 
+                             paginatorPosition="bottom" rows="5">
+
+                    <p:column headerText="Código" width="5%" style="text-align: center">
+                        <h:outputText value="#{conteudo.id}" />
+                    </p:column>
+
+                    <p:column headerText="Cliente" width="30%" style="text-align: center">
+                        <h:outputText value="#{conteudo.cliente.nome}" />
+                    </p:column>
+
+                    <p:column headerText="Propriedade" width="30%" style="text-align: center">
+                        <h:outputText value="#{conteudo.propriedade.descricao}" />
+                    </p:column>
+
+                    <p:column headerText="Valor R$" width="10%" style="text-align: center">
+                        <h:outputText value="#{conteudo.valorComDesconto}" />
+                    </p:column>
+
+                    <p:column headerText="Editar" width="5%" style="text-align: center">
+                        <p:commandLink action="#{agendamentoController.editar(conteudo)}">
+                            <i class="pi pi-pencil"/>
+                        </p:commandLink>
+                    </p:column>
+
+                    <p:column headerText="Remover" width="5%" style="text-align: center">
+                        <p:commandLink actionListener="#{agendamentoController.excluir(conteudo)}" ajax="true" update="form:tabela">
+                            <i class="pi pi-trash"/>
+                        </p:commandLink>
+                    </p:column>
+                </p:dataTable>
+            </div>
+
+            <div class="btnGroup mt30">
+                <p:commandButton value="Novo" action="form?faces-redirect=true" icon="pi pi-plus" />
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>

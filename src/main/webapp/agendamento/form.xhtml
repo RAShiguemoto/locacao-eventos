@@ -1,0 +1,60 @@
+<ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/template/layout.xhtml">
+
+    <ui:define name="content">
+        <f:metadata>
+            <f:viewParam name="id" value="#{agendamentoController.paramId}"/>
+            <f:viewAction action="#{agendamentoController.novo()}"/>
+        </f:metadata>
+
+        <div class="divTitle">
+            <p:outputLabel value="Cadastro de Usuário" class="title"/>
+        </div>
+
+        <h:form>
+            <div class="divCorpo w60 ml20" style="display: flex">
+                <div class="w50" style="padding: 0.3125rem">
+                    <p:outputLabel for="cliente" value="Cliente:"/>
+                    <p:autoComplete id="cliente"
+                                    var="cli"
+                                    itemLabel="#{cli.nome}"
+                                    itemValue="#{cli.id.toString()}"
+                                    value="#{agendamentoController.agendamento.cliente}" 
+                                    completeMethod="#{clienteController.autoComplete}"
+                                    converter="#{clienteController.converter()}"
+                                    style="width: 100%; margin-top: 0.3125rem"
+                                    inputStyleClass="w100"/>
+                </div>
+                
+                <div class="w50" style="padding: 0.3125rem">
+                    <p:outputLabel for="cliente" value="Cliente:"/>
+                    <p:autoComplete id="cliente"
+                                    var="cli"
+                                    itemLabel="#{cli.nome}"
+                                    itemValue="#{cli.id.toString()}"
+                                    value="#{agendamentoController.agendamento.cliente}" 
+                                    completeMethod="#{clienteController.autoComplete}"
+                                    converter="#{clienteController.converter()}"
+                                    style="width: 100%; margin-top: 0.3125rem"
+                                    inputStyleClass="w100"/>
+                </div>
+            </div>
+
+            <div class="btnGroup mt30">
+                <p:commandButton value="Salvar" 
+                                 action="#{agendamentoController.salvar()}" 
+                                 styleClass="ui-button-success" 
+                                 icon="pi pi-save"/>
+                
+                <p:commandButton value="Cancelar" 
+                                 action="list?faces-redirect=true" 
+                                 styleClass="ui-button-secondary" 
+                                 style="margin-left: 0.625rem"
+                                 icon="pi pi-save"/>
+            </div>
+        </h:form>
+    </ui:define>
+</ui:composition>
