@@ -42,6 +42,17 @@ public class AgendamentoController implements Serializable {
         }
     }
     
+    public void setarValorDiaria() {
+        if (agendamento.getPropriedade() != null) {
+            agendamento.setValorDiaria(agendamento.getPropriedade().getValorDiaria());
+        }
+    }
+    
+    public void calculaTotal() {
+        agendamento.setValorTotal(agendamento.getQuantidadeDiaria().multiply(agendamento.getValorDiaria()));
+        agendamento.setValorComDesconto(agendamento.getValorTotal().subtract(agendamento.getDesconto()));
+    }
+    
     public String salvar() {
         log.info("Salvando usuário '{}'.", agendamento.getId());
         agendamentoFacade.salvar(agendamento);

@@ -11,7 +11,7 @@
         </f:metadata>
 
         <div class="divTitle">
-            <p:outputLabel value="Cadastro de Usuário" class="title"/>
+            <p:outputLabel value="Agendamento" class="title"/>
         </div>
 
         <h:form>
@@ -28,27 +28,112 @@
                                     style="width: 100%; margin-top: 0.3125rem"
                                     inputStyleClass="w100"/>
                 </div>
-                
+
                 <div class="w50" style="padding: 0.3125rem">
-                    <p:outputLabel for="cliente" value="Cliente:"/>
-                    <p:autoComplete id="cliente"
-                                    var="cli"
-                                    itemLabel="#{cli.nome}"
-                                    itemValue="#{cli.id.toString()}"
-                                    value="#{agendamentoController.agendamento.cliente}" 
-                                    completeMethod="#{clienteController.autoComplete}"
-                                    converter="#{clienteController.converter()}"
+                    <p:outputLabel for="propriedade" value="Propriedade:"/>
+                    <p:autoComplete id="propriedade"
+                                    var="prop"
+                                    itemLabel="#{prop.nome}"
+                                    itemValue="#{prop.id.toString()}"
+                                    value="#{agendamentoController.agendamento.propriedade}" 
+                                    completeMethod="#{propriedadeController.autoComplete}"
+                                    converter="#{propriedadeController.converter()}"
+                                    dropdown="true"
                                     style="width: 100%; margin-top: 0.3125rem"
-                                    inputStyleClass="w100"/>
+                                    inputStyleClass="w90">
+
+                        <p:ajax event="itemSelect" 
+                                update="valoresGroup"
+                                listener="#{agendamentoController.setarValorDiaria()}"/>
+                    </p:autoComplete>
                 </div>
             </div>
+
+            <h:panelGroup id="valoresGroup">
+                <div class="divCorpo w60 ml20" style="display: flex">
+                    <div class="w20" style="padding: 0.3125rem">
+                        <p:outputLabel for="valorDiaria" value="Valor Diária:"/>
+                        <p:inputText id="valorDiaria" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.valorDiaria}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     style="width: 100%; margin-top: 0.3125rem">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:inputText> 
+                    </div>
+
+                    <div class="w20" style="padding: 0.3125rem">
+                        <p:outputLabel for="quantidadeDias" value="Qtd. Dias:"/>
+                        <p:inputText id="quantidadeDias" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.quantidadeDiaria}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     style="width: 100%; margin-top: 0.3125rem">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            
+                            <p:ajax event="blur" 
+                                    update="valoresGroup"
+                                    listener="#{agendamentoController.calculaTotal()}"/>
+                        </p:inputText> 
+                    </div>
+
+                    <div class="w20" style="padding: 0.3125rem">
+                        <p:outputLabel for="valorTotal" value="Valor Total:"/>
+                        <p:inputText id="valorTotal" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.valorTotal}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     disabled="true"
+                                     style="width: 100%; margin-top: 0.3125rem">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:inputText> 
+                    </div>
+
+                    <div class="w20" style="padding: 0.3125rem">
+                        <p:outputLabel for="valorDesconto" value="Desconto:"/>
+                        <p:inputText id="valorDesconto" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.desconto}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     style="width: 100%; margin-top: 0.3125rem">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                            
+                            <p:ajax event="blur" 
+                                    update="valoresGroup"
+                                    listener="#{agendamentoController.calculaTotal()}"/>
+                        </p:inputText> 
+                    </div>
+
+                    <div class="w20" style="padding: 0.3125rem">
+                        <p:outputLabel for="totalComDesconto" value="Total Líquido:"/>
+                        <p:inputText id="totalComDesconto" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.valorComDesconto}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     disabled="true"
+                                     style="width: 100%; margin-top: 0.3125rem">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+                        </p:inputText> 
+                    </div>
+                </div>
+            </h:panelGroup>
 
             <div class="btnGroup mt30">
                 <p:commandButton value="Salvar" 
                                  action="#{agendamentoController.salvar()}" 
                                  styleClass="ui-button-success" 
                                  icon="pi pi-save"/>
-                
+
                 <p:commandButton value="Cancelar" 
                                  action="list?faces-redirect=true" 
                                  styleClass="ui-button-secondary" 

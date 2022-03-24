@@ -1,5 +1,6 @@
 package com.ras.controller;
 
+import com.ras.converter.GenericConverter;
 import com.ras.facade.PropriedadeFacade;
 import com.ras.model.Logradouro;
 import com.ras.model.Propriedade;
@@ -27,6 +28,15 @@ public class PropriedadeController implements Serializable {
     private Propriedade propriedade;
     private List<Propriedade> propriedades = new ArrayList<>();
     private Long paramId;
+    
+    private GenericConverter converter;
+
+    public GenericConverter converter() {
+        if (converter == null) {
+            converter = new GenericConverter(propriedadeFacade);
+        }
+        return converter;
+    }
     
     @Inject
     private PropriedadeFacade propriedadeFacade;
@@ -61,5 +71,9 @@ public class PropriedadeController implements Serializable {
         
         FacesContext context = FacesContext.getCurrentInstance();
         context.addMessage(null, new FacesMessage("Mensagem",  "Propriedade excluída com sucesso!"));
+    }
+    
+    public List<Propriedade> autoComplete(String cons) {
+        return propriedadeFacade.autoComplete("nome", cons);
     }
 }

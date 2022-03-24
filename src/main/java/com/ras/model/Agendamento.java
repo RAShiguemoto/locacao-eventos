@@ -11,8 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  *
@@ -20,8 +20,8 @@ import lombok.NoArgsConstructor;
  */
 
 @Entity
-@Data
-@NoArgsConstructor
+@Getter
+@Setter
 public class Agendamento implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,6 +61,14 @@ public class Agendamento implements Serializable {
     
     @ManyToOne
     private Propriedade propriedade;
+
+    public Agendamento() {
+        this.valorDiaria = BigDecimal.ZERO;
+        this.quantidadeDiaria = BigDecimal.ONE;
+        this.valorTotal = BigDecimal.ZERO;
+        this.desconto = BigDecimal.ZERO;
+        this.valorComDesconto = BigDecimal.ZERO;
+    }
     
     @Override
     public String toString() {
