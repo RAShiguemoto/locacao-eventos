@@ -53,8 +53,8 @@ public class Agendamento implements Serializable {
     @Column(name = "desconto")
     private BigDecimal desconto;
     
-    @Column(name = "valor_com_desconto")
-    private BigDecimal valorComDesconto;
+    @Column(name = "valor_total_loquido")
+    private BigDecimal valorTotalLiquido;
     
     @ManyToOne
     private Cliente cliente;
@@ -67,7 +67,9 @@ public class Agendamento implements Serializable {
         this.quantidadeDiaria = BigDecimal.ONE;
         this.valorTotal = BigDecimal.ZERO;
         this.desconto = BigDecimal.ZERO;
-        this.valorComDesconto = BigDecimal.ZERO;
+        this.valorTotalLiquido = BigDecimal.ZERO;
+        this.dataInicialDiaria = new Date();
+        this.dataFinalDiaria = new Date();
     }
     
     @Override

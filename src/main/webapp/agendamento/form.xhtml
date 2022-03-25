@@ -49,9 +49,56 @@
                 </div>
             </div>
 
+            <h:panelGroup id="dataGroup">
+                <div class="divCorpo w60 ml20" style="display: flex">
+                    <div class="w33" style="padding: 0.3125rem">
+                        <p:outputLabel for="dataInicial" value="Data Inicial:"/>
+                        <p:datePicker id="dataInicial" 
+                                      value="#{agendamentoController.agendamento.dataInicialDiaria}"
+                                      style="width: 100%"
+                                      inputStyleClass="w100">
+
+                            <p:ajax event="dateSelect" 
+                                    update="dataGroup valoresGroup"
+                                    listener="#{agendamentoController.atualizarDiasETotais()}"/>
+                        </p:datePicker>
+                    </div>
+
+                    <div class="w33" style="padding: 0.3125rem">
+                        <p:outputLabel for="dataFinal" value="Data Final:"/>
+                        <p:datePicker id="dataFinal" 
+                                      value="#{agendamentoController.agendamento.dataFinalDiaria}"
+                                      style="width: 100%"
+                                      inputStyleClass="w100">
+
+                            <p:ajax event="dateSelect" 
+                                    update="dataGroup valoresGroup"
+                                    listener="#{agendamentoController.atualizarDiasETotais()}"/>
+                        </p:datePicker>
+                    </div>
+
+                    <div class="w33" style="padding: 0.3125rem">
+                        <p:outputLabel for="quantidadeDias" value="Qtd. Dias:"/>
+                        <p:inputText id="quantidadeDias" 
+                                     class="textUpperCase" 
+                                     value="#{agendamentoController.agendamento.quantidadeDiaria}"
+                                     onclick="this.select()"
+                                     onkeyup="mascara(this, valor)"
+                                     style="width: 100%">
+
+                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
+
+                            <p:ajax event="blur" 
+                                    update="dataGroup valoresGroup"
+                                    listener="#{agendamentoController.atualizarDatasETotais()}"/>
+                        </p:inputText> 
+                    </div>
+                </div>
+            </h:panelGroup>
+
             <h:panelGroup id="valoresGroup">
                 <div class="divCorpo w60 ml20" style="display: flex">
-                    <div class="w20" style="padding: 0.3125rem">
+                    <div class="w25" style="padding: 0.3125rem">
                         <p:outputLabel for="valorDiaria" value="Valor Diária:"/>
                         <p:inputText id="valorDiaria" 
                                      class="textUpperCase" 
@@ -64,24 +111,7 @@
                         </p:inputText> 
                     </div>
 
-                    <div class="w20" style="padding: 0.3125rem">
-                        <p:outputLabel for="quantidadeDias" value="Qtd. Dias:"/>
-                        <p:inputText id="quantidadeDias" 
-                                     class="textUpperCase" 
-                                     value="#{agendamentoController.agendamento.quantidadeDiaria}"
-                                     onclick="this.select()"
-                                     onkeyup="mascara(this, valor)"
-                                     style="width: 100%; margin-top: 0.3125rem">
-
-                            <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                            
-                            <p:ajax event="blur" 
-                                    update="valoresGroup"
-                                    listener="#{agendamentoController.calculaTotal()}"/>
-                        </p:inputText> 
-                    </div>
-
-                    <div class="w20" style="padding: 0.3125rem">
+                    <div class="w25" style="padding: 0.3125rem">
                         <p:outputLabel for="valorTotal" value="Valor Total:"/>
                         <p:inputText id="valorTotal" 
                                      class="textUpperCase" 
@@ -95,7 +125,7 @@
                         </p:inputText> 
                     </div>
 
-                    <div class="w20" style="padding: 0.3125rem">
+                    <div class="w25" style="padding: 0.3125rem">
                         <p:outputLabel for="valorDesconto" value="Desconto:"/>
                         <p:inputText id="valorDesconto" 
                                      class="textUpperCase" 
@@ -105,18 +135,18 @@
                                      style="width: 100%; margin-top: 0.3125rem">
 
                             <f:convertNumber minFractionDigits="2" maxFractionDigits="2"/>
-                            
+
                             <p:ajax event="blur" 
                                     update="valoresGroup"
                                     listener="#{agendamentoController.calculaTotal()}"/>
                         </p:inputText> 
                     </div>
 
-                    <div class="w20" style="padding: 0.3125rem">
+                    <div class="w25" style="padding: 0.3125rem">
                         <p:outputLabel for="totalComDesconto" value="Total Líquido:"/>
                         <p:inputText id="totalComDesconto" 
                                      class="textUpperCase" 
-                                     value="#{agendamentoController.agendamento.valorComDesconto}"
+                                     value="#{agendamentoController.agendamento.valorTotalLiquido}"
                                      onclick="this.select()"
                                      onkeyup="mascara(this, valor)"
                                      disabled="true"
