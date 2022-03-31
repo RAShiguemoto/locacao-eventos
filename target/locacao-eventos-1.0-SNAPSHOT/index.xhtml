@@ -1,8 +1,39 @@
 <ui:composition xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui"
                 template="WEB-INF/template/layout.xhtml"
-                xmlns:p="http://primefaces.org/ui">
-    
+                xmlns:h="http://xmlns.jcp.org/jsf/html">
+
     <ui:define name="content">
-        <p:outputLabel value="Conteúdo"/>
+        <h:form>
+            <div class="container">
+                <h:commandLink title="Cadastro de Usuário" action="/usuario/list?faces-redirect=true">
+                    <div class="cardIndex">
+                        <i class="pi pi-user"/> <br/>
+                        <p:outputLabel value="Usuário"/>
+                    </div>
+                </h:commandLink>
+
+                <h:commandLink title="Cadastro de Cliente" action="/cliente/list?faces-redirect=true">
+                    <div class="cardIndex">
+                        <i class="pi pi-users"/> <br/>
+                        <p:outputLabel value="Cliente"/>
+                    </div>
+                </h:commandLink>
+
+                <h:commandLink title="Cadastro de Propriedade" action="/propriedade/list?faces-redirect=true">
+                    <div class="cardIndex">
+                        <i class="pi pi-th-large"/> <br/>
+                        <p:outputLabel value="Propriedade"/>
+                    </div>
+                </h:commandLink>
+
+                <h:commandLink title="Reservar Propriedade" action="/agendamento/list?faces-redirect=true">
+                    <div class="cardIndex">
+                        <i class="pi pi-calendar"/> <br/>
+                        <p:outputLabel value="Reservar"/>
+                    </div>
+                </h:commandLink>
+            </div>
+        </h:form>
     </ui:define>
 </ui:composition>

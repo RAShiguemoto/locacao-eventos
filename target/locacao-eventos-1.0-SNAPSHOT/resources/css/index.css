@@ -1,0 +1,51 @@
+.container {
+    width: 90%;
+    margin-top: 1.5625rem;
+    margin-left: 5%;
+    display: flex;
+}
+
+.container a {
+    text-decoration: none;
+}
+
+.cardIndex {
+    margin-left: 20px;
+    width: 155px;
+    height: 155px;
+    border: 1px #1f2d40 solid;
+    border-radius: 5px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.cardIndex i {
+    margin-top: 35px;
+    font-size: 45px;
+    color: #1f2d40;
+    cursor: pointer;
+}
+
+.cardIndex label {
+    font-size: 22px;
+    color: #1f2d40;
+    cursor: pointer;
+}
+
+.cardIndex:hover {
+    background-color: #1f2d40;
+    border: none !important;
+    transition-duration: 0.5s;
+}
+
+.cardIndex:hover i {
+    color: white;
+    transform: rotate(360deg);
+    transition-duration: 0.8s;
+    
+}
+
+.cardIndex:hover label {
+    color: white;
+    transition-duration: 0.5s;
+}
