@@ -41,7 +41,12 @@
                     </p:column>
 
                     <p:column headerText="Valor R$" width="10%" style="text-align: center">
-                        <h:outputText value="#{conteudo.valorComDesconto}" />
+                        <h:outputText value="#{conteudo.valorTotalLiquido}">
+                            <f:convertNumber minFractionDigits="2" 
+                                             maxFractionDigits="2"
+                                             type="currency"
+                                             currencySymbol="R$"/>
+                        </h:outputText>
                     </p:column>
 
                     <p:column headerText="Editar" width="5%" style="text-align: center">

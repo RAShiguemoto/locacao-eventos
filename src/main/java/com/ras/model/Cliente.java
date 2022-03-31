@@ -51,4 +51,9 @@ public class Cliente implements Serializable {
         logradouro.setComplemento(logradouro.getComplemento().toUpperCase());
         contato.setEmail(contato.getEmail().toLowerCase());
     }
+    
+    @Override
+    public String toString() {
+        return id.toString();
+    }
 }

@@ -16,7 +16,6 @@ import javax.inject.Named;
 import lombok.Data;
 import lombok.extern.log4j.Log4j2;
 import org.joda.time.DateTime;
-import org.joda.time.Days;
 
 /**
  *
@@ -59,23 +58,19 @@ public class AgendamentoController implements Serializable {
         calculaTotal();
     }
     
+    private Long getTimeMillisDate(Date data) {
+        Calendar calendar = Calendar.getInstance(); // locale-specific
+        calendar.setTime(data);
+        calendar.set(Calendar.HOUR_OF_DAY, 0);
+        calendar.set(Calendar.MINUTE, 0);
+        calendar.set(Calendar.SECOND, 0);
+        calendar.set(Calendar.MILLISECOND, 0);
+        return calendar.getTimeInMillis();
+    }
+    
     private void atualizarQtdDias() {
-        Calendar cal1 = Calendar.getInstance(); // locale-specific
-        cal1.setTime(agendamento.getDataInicialDiaria());
-        cal1.set(Calendar.HOUR_OF_DAY, 0);
-        cal1.set(Calendar.MINUTE, 0);
-        cal1.set(Calendar.SECOND, 0);
-        cal1.set(Calendar.MILLISECOND, 0);
-        long time1 = cal1.getTimeInMillis();
-        
-        Calendar cal2 = Calendar.getInstance(); // locale-specific
-        cal2.setTime(agendamento.getDataFinalDiaria());
-        cal2.set(Calendar.HOUR_OF_DAY, 0);
-        cal2.set(Calendar.MINUTE, 0);
-        cal2.set(Calendar.SECOND, 0);
-        cal2.set(Calendar.MILLISECOND, 0);
-        long time2 = cal2.getTimeInMillis();
-        
+        long time1 = getTimeMillisDate(agendamento.getDataInicialDiaria());
+        long time2 = getTimeMillisDate(agendamento.getDataFinalDiaria());
         long finalTime = time2 - time1;
         long dias = (((finalTime / 1000) / 60) / 60) / 24;
         agendamento.setQuantidadeDiaria(new BigDecimal(dias));
@@ -99,7 +94,7 @@ public class AgendamentoController implements Serializable {
     }
     
     public String salvar() {
-        log.info("Salvando usuário '{}'.", agendamento.getId());
+        log.info("Salvando agendamento '{}'.", agendamento.getCliente().getNome());
         agendamentoFacade.salvar(agendamento);
         return "list?faces-redirect=true";
     }
@@ -109,11 +104,11 @@ public class AgendamentoController implements Serializable {
     }
     
     public void excluir(Agendamento ag) {
-        log.info("Excluindo usuário '{}'.", ag.getId());
+        log.info("Excluindo agendamento '{}'.", ag.getId());
         agendamentoFacade.excluir(ag);
         listar();
         
         FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage("Mensagem",  "Usuário excluído com sucesso!"));
+        context.addMessage(null, new FacesMessage("Mensagem",  "Agendamento excluído com sucesso!"));
     }
 }
