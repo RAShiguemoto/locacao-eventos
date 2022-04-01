@@ -22,5 +22,3 @@ Ainda em desenvolvimento.
 
 ## Agendamento / Reserva
 ![agendamento](https://user-images.githubusercontent.com/24597559/161301657-52877a6b-e891-45ac-bb81-f1872c3d3d58.png)
-
-
