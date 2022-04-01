@@ -9,8 +9,8 @@ Obs.: Front-end não é o foco deste projeto.
 - PostgreSQL;
 - Hibernate;
 - CDI;
-- Lombook;
-- -Log4J.
+- Lombok;
+- -Log4j.
 
 ## Home Page
 Ainda em desenvolvimento.
